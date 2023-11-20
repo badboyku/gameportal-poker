@@ -111,7 +111,7 @@ module.exports = (_env, args) => {
         name: 'gameportal_poker',
         filename: 'remoteEntry.js',
         remotes: {},
-        exposes: {},
+        exposes: { './pokerRoutes': './src/routes' },
         shared: { ...deps },
       }),
       new HtmlWebpackPlugin({
