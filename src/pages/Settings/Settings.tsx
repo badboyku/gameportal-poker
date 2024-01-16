@@ -1,12 +1,14 @@
-import {Link, useLoaderData, useRouteLoaderData} from 'react-router-dom';
+import { memo } from 'react';
+import { Link, useLoaderData, useOutletContext, useRouteLoaderData } from 'react-router-dom';
 
 type Props = {};
 
 const Settings = (_props: Props) => {
+  const context = useOutletContext();
   const gameportalData = useRouteLoaderData('gameportal');
   const gameportalPokerData = useRouteLoaderData('gameportalPoker');
   const data = useLoaderData();
-  console.log('gameportalPoker Settings', { gameportalData, gameportalPokerData, data });
+  console.log('GameportalPokerSettings', { context, gameportalData, gameportalPokerData, data });
 
   return (
     <div>
@@ -19,4 +21,4 @@ const Settings = (_props: Props) => {
   );
 };
 
-export default Settings;
+export default memo(Settings);

@@ -1,17 +1,19 @@
-import {Link, useLoaderData, useRouteLoaderData} from 'react-router-dom';
-import {HelloWorld} from '../../components';
-import {getEnvVars} from '../../utils/env';
-import logoUrl, {ReactComponent as Logo} from './logo.svg';
+import { memo } from 'react';
+import { Link, useLoaderData, useOutletContext, useRouteLoaderData } from 'react-router-dom';
+import { HelloWorld } from '../../components';
+import { getEnvVars } from '../../utils/env';
+import logoUrl, { ReactComponent as Logo } from './logo.svg';
 import './style.scss';
 import './styles.css';
 
 type Props = {};
 
 const Home = (_props: Props) => {
+  const context = useOutletContext();
   const gameportalData = useRouteLoaderData('gameportal');
   const gameportalPokerData = useRouteLoaderData('gameportalPoker');
   const data = useLoaderData();
-  console.log('gameportalPoker Home', { gameportalData, gameportalPokerData, data });
+  console.log('GameportalPokerHome', { context, gameportalData, gameportalPokerData, data });
 
   const { REACT_APP_MY_VAR } = getEnvVars();
 
@@ -38,4 +40,4 @@ const Home = (_props: Props) => {
   );
 };
 
-export default Home;
+export default memo(Home);

@@ -1,16 +1,19 @@
 /* istanbul ignore file */
 import type { ReactAppEnvVars } from '../@types/global';
 
-export const DefaultEnvVars: ReactAppEnvVars = {
-  REACT_APP_MY_VAR: '',
+const DefaultEnvVars: ReactAppEnvVars = {
+  REACT_APP_POKER_API_URL: '',
+  REACT_APP_TOKEN: '',
 };
 
-export const getEnvVars = (): ReactAppEnvVars => {
+const getEnvVars = (): ReactAppEnvVars => {
   const { __RUNTIME_CONFIG__: env = DefaultEnvVars } = window;
 
   return { ...DefaultEnvVars, ...env };
 };
 
-export const setEnvVars = (newEnvVars: ReactAppEnvVars): void => {
+const setEnvVars = (newEnvVars: ReactAppEnvVars): void => {
   window.__RUNTIME_CONFIG__ = { ...DefaultEnvVars, ...newEnvVars };
 };
+
+export { DefaultEnvVars, getEnvVars, setEnvVars };

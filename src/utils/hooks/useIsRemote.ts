@@ -1,4 +1,4 @@
-import {RouteObject, useMatches} from 'react-router-dom';
+import { RouteObject, useMatches } from 'react-router-dom';
 
 export const useIsRemote = () => {
   const matches = useMatches();

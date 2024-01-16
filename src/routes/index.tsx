@@ -1,49 +1,35 @@
-import type {RouteObject} from 'react-router-dom';
-import {Outlet, redirect, useLoaderData, useRouteLoaderData} from 'react-router-dom';
-import {ErrorBoundary} from '../components';
-import {Home, Settings} from '../pages';
+import { redirect } from 'react-router-dom';
+import { Home, Settings } from '../pages';
+import { appRootLoader } from '../utils/loaders';
+import { AppRoot } from './AppRoot';
+import { ErrorBoundary } from './ErrorBoundary';
+import type { RouteObject } from 'react-router-dom';
 
-const Root = () => {
-  const gameportalData = useRouteLoaderData('gameportal');
-  const gameportalPokerData = useRouteLoaderData('gameportalPoker');
-  const data = useLoaderData();
-  console.log('gameportalPoker Root', { gameportalData, gameportalPokerData, data });
+type Props = { appPath?: string; isRemote?: boolean };
 
-  return <Outlet />;
-};
-
-type Props = {
-  appPath?: string;
-  features?: { name: string; hasFeature: boolean}[];
-  isRemote?: boolean;
-  token?: string;
-};
 export const getRoutes = (props: Props = {}): RouteObject[] => {
-  const { appPath , features= [], isRemote = false, token } = props;
+  console.log('GameportalPokerGetRoutes', { props });
+  const { appPath = '/', isRemote = false } = props;
 
   return [
     {
-      path: appPath ? `${appPath}/*` : '/',
+      path: appPath !== '/' ? `${appPath}/*` : appPath,
       id: 'gameportalPoker',
-      element: <Root />,
+      element: <AppRoot />,
       errorElement: <ErrorBoundary />,
-      loader(loader1Props) {
-        console.log('gameportalPoker root loader', { loader1Props })
-
-        return { appPath: appPath ?? '/', features, isRemote, token };
-      },
+      loader: appRootLoader({ appPath, isRemote }),
       children: [
         { index: true, element: <Home /> },
         {
           path: 'settings/',
           element: <Settings />,
-          loader(loader2props) {
-            console.log('gameportalPoker settings loader', { loader2props })
+          loader: (settingsLoaderProps) => {
+            console.log('GameportalPoker Settings loader', { settingsLoaderProps });
 
             return { foo: 'bar' };
           },
         },
-        { path: '*', loader: () => redirect(appPath ?? '/') },
+        { path: '*', loader: () => redirect(appPath) },
       ],
     },
   ];
