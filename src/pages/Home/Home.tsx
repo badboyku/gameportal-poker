@@ -1,8 +1,8 @@
-import { memo } from 'react';
-import { Link, useLoaderData, useOutletContext, useRouteLoaderData } from 'react-router-dom';
-import { HelloWorld } from '../../components';
-import { getEnvVars } from '../../utils/env';
-import logoUrl, { ReactComponent as Logo } from './logo.svg';
+import {memo} from 'react';
+import {Link, useLoaderData, useOutletContext, useRouteLoaderData} from 'react-router-dom';
+import {HelloWorld} from '../../components';
+import {getEnvVars} from '../../utils/env';
+import logoUrl, {ReactComponent as Logo} from './logo.svg';
 import './style.scss';
 import './styles.css';
 
@@ -15,7 +15,7 @@ const Home = (_props: Props) => {
   const data = useLoaderData();
   console.log('GameportalPokerHome', { context, gameportalData, gameportalPokerData, data });
 
-  const { REACT_APP_MY_VAR } = getEnvVars();
+  const { REACT_APP_POKER_API_URL, REACT_APP_TOKEN } = getEnvVars();
 
   return (
     <div>
@@ -31,7 +31,10 @@ const Home = (_props: Props) => {
         IS_PROD: <span style={{ fontWeight: 'bold' }}>{IS_PROD.toString()}</span>
       </div>
       <div>
-        REACT_APP_MY_ENVVAR: <span style={{ fontWeight: 'bold' }}>{REACT_APP_MY_VAR}</span>
+        REACT_APP_POKER_API_URL: <span style={{ fontWeight: 'bold' }}>{REACT_APP_POKER_API_URL}</span>
+      </div>
+      <div>
+        REACT_APP_TOKEN: <span style={{ fontWeight: 'bold' }}>{REACT_APP_TOKEN}</span>
       </div>
       <div style={{ marginTop: 20 }}>
         <Link to="settings/">settings</Link>

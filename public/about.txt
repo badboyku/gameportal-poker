@@ -1,0 +1,6 @@
+This favicon was generated using the following font:
+
+- Font Title: Rubik Vinyl
+- Font Author: Copyright 2020 The Rubik Filtered Project Authors (https://github.com/NaN-xyz/Rubik-Filtered)
+- Font Source: http://fonts.gstatic.com/s/rubikvinyl/v1/iJWABXKIfDnIV4mQ5BfjvUXexox2ztOU.ttf
+- Font License: SIL Open Font License, 1.1 (http://scripts.sil.org/OFL))

@@ -22,6 +22,7 @@ module.exports = (_env, args) => {
       {
         IS_DEV: !isProduction,
         IS_PROD: isProduction,
+        SETTINGS_CODE: 'asdfasdf',
       },
     );
   const envVarsStringified = Object.keys(envVars).reduce((envVar, key) => {

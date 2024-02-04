@@ -1,0 +1,90 @@
+.settings-button {
+  border: none;
+  background: none;
+  float: right;
+  position: absolute;
+  outline: 0;
+  top: 0;
+  right: 0;
+  height: 16px;
+  width: 16px;
+}
+
+.settings-container {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(15, 15, 15, 0.3);
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+}
+
+.settings-modal {
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: whitesmoke 1px 2px, white 1px 1px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-family: sans-serif;
+  min-width: 400px;
+  width: 50vw;
+}
+
+.settings-modal-header-row {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-bottom: 20px;
+}
+.settings-modal-header {
+  width: 100%;
+}
+.settings-modal-title {
+  margin: 0;
+}
+.settings-modal-header-close {
+  transform: translate(4px, -5px);
+}
+.settings-modal-header-close-button {
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  color: grey;
+}
+.settings-modal-header-close-button:hover {
+  color: black;
+}
+
+.settings-form-field {
+  font-size: 14px;
+}
+.settings-form-field-row {
+  display: flex;
+  align-items: center;
+  padding-bottom: 10px;
+}
+.settings-form-field-label {
+  cursor: pointer;
+  padding-right: 5px;
+  width: 115px;
+  white-space: nowrap;
+}
+.settings-form-field-input {
+  width: 100%;
+}
+.settings-form-field-input-box {
+  width: 98%;
+}
+
+.settings-form-button-row {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  padding-top: 10px;
+}
+.settings-form-button {
+  cursor: pointer;
+}

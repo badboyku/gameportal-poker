@@ -1,4 +1,4 @@
-import type { DateTime } from 'luxon';
+import type {DateTime} from 'luxon';
 
 export type AuthData = {
   isAuthenticated?: boolean;
@@ -9,15 +9,9 @@ export type AuthData = {
 };
 export type AuthState = { setData?: (data: AuthData) => void } & AuthData;
 
-export type SettingsData = {
-  appPath: string;
-  isRemote: boolean;
-  pokerApiUrl: string;
-  token: string;
-};
-export type SettingsState = { setData?: (data: SettingsData) => void } & SettingsData;
+export type AppContext = { auth?: AuthState };
 
-export type AppContext = { auth?: AuthState; settings: SettingsData };
+export type Settings = { pokerApiUrl: string; token: string };
 
 // Add custom react env vars here for runtime env vars.
 export type ReactAppEnvVars = {
@@ -29,6 +23,7 @@ export type ReactAppEnvVars = {
 declare global {
   declare const IS_DEV: boolean;
   declare const IS_PROD: boolean;
+  declare const SETTINGS_CODE: string;
 
   export interface Window {
     __RUNTIME_CONFIG__?: ReactAppEnvVars | {};
