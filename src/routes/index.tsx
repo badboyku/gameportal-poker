@@ -1,9 +1,9 @@
-import type {RouteObject} from 'react-router-dom';
-import {redirect} from 'react-router-dom';
-import {Home, Settings} from '../pages';
-import {appRootLoader, homeLoader, settingsLoader} from '../utils/loaders';
-import {AppRoot} from './AppRoot';
-import {ErrorBoundary} from './ErrorBoundary';
+import { redirect } from 'react-router-dom';
+import { Home, Settings } from '../pages';
+import { appRootLoader, homeLoader, settingsLoader } from '../utils/loaders';
+import { AppRoot } from './AppRoot';
+import { ErrorBoundary } from './ErrorBoundary';
+import type { RouteObject } from 'react-router-dom';
 
 type Props = { appPath?: string; isRemote?: boolean };
 

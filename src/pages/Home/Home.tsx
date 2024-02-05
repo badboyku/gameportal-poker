@@ -1,8 +1,8 @@
-import {memo} from 'react';
-import {Link, useLoaderData, useOutletContext, useRouteLoaderData} from 'react-router-dom';
-import {HelloWorld} from '../../components';
-import {getEnvVars} from '../../utils/env';
-import logoUrl, {ReactComponent as Logo} from './logo.svg';
+import { memo } from 'react';
+import { Link, useLoaderData, useOutletContext, useRouteLoaderData } from 'react-router-dom';
+import { HelloWorld } from '../../components';
+import { getEnvVars } from '../../utils/env';
+import logoUrl, { ReactComponent as Logo } from './logo.svg';
 import './style.scss';
 import './styles.css';
 

@@ -1,5 +1,5 @@
-import {getEnvVars, setEnvVars} from './env';
-import type {Settings} from '../@types/global';
+import { getEnvVars, setEnvVars } from './env';
+import type { Settings } from '../@types/global';
 
 const { REACT_APP_POKER_API_URL: pokerApiUrl, REACT_APP_TOKEN: token } = getEnvVars();
 const storageKey = 'gameportal-poker-settings';

@@ -1,6 +1,6 @@
-import {useCallback, useState} from 'react';
-import {DateTime} from 'luxon';
-import type {AuthData, AuthState} from '../../@types/global';
+import { useCallback, useState } from 'react';
+import { DateTime } from 'luxon';
+import type { AuthData, AuthState } from '../../@types/global';
 
 const initialState = {
   isAuthenticated: false,

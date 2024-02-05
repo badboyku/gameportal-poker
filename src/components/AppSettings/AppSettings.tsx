@@ -1,10 +1,10 @@
-import type {ChangeEvent, FormEvent, KeyboardEvent, MouseEvent} from 'react';
-import {memo, useCallback, useEffect, useState} from 'react';
-import {useRevalidator} from 'react-router-dom';
-import {useAuth} from '../../utils/hooks';
+import { memo, useCallback, useEffect, useState } from 'react';
+import { useRevalidator } from 'react-router-dom';
+import { useAuth } from '../../utils/hooks';
 import settings from '../../utils/settings';
+import type { ChangeEvent, FormEvent, KeyboardEvent, MouseEvent } from 'react';
 import './styles.css';
-import type {Settings} from '../../@types/global';
+import type { Settings } from '../../@types/global';
 
 type Props = {};
 
@@ -16,6 +16,7 @@ const AppSettings = (_props: Props) => {
   const [isMouseOn, setIsMouseOn] = useState(false);
   const [keys, setKeys] = useState('');
   const [formData, setFormData] = useState<Settings>({ pokerApiUrl, token });
+  const [doRevalidate, setDoRevalidate] = useState(false);
 
   const fields: { label: string; name: keyof Settings }[] = [
     { label: 'Poker API Url', name: 'pokerApiUrl' },
@@ -29,6 +30,12 @@ const AppSettings = (_props: Props) => {
       setIsModalOpen(true);
     }
   }, [keys]);
+  useEffect(() => {
+    if (doRevalidate) {
+      setDoRevalidate(false);
+      revalidator.revalidate();
+    }
+  }, [doRevalidate, revalidator]);
 
   const closeButtonHandleOnKeyDown = useCallback((event: KeyboardEvent<HTMLInputElement>) => {
     event.stopPropagation();
@@ -49,9 +56,9 @@ const AppSettings = (_props: Props) => {
         setAuthData({ idToken: { __raw: formData.token } });
       }
       setIsModalOpen(false);
-      revalidator.revalidate();
+      setDoRevalidate(true);
     },
-    [setAuthData, formData.token, formData.pokerApiUrl, revalidator],
+    [setAuthData, formData.token, formData.pokerApiUrl],
   );
   const formInputHandleChange = useCallback((event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
